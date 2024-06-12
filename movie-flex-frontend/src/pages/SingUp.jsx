@@ -1,3 +1,5 @@
+import { useState } from "react";
+import SignUpValidator from "../validators/SignUpValidator";
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -5,6 +7,43 @@ const SignUp = () => {
   const GIconUrl = "https://i.imgur.com/GJnmeaj.png";
   const FbIconUrl = "https://i.imgur.com/QFwv2qR.png";
   const logoUrl = "https://i.imgur.com/ouyiPCG.png";
+
+  const initialFormData = {
+    name: "",
+    email: "",
+    password: "",
+  };
+  const initialFormError = {
+    name: "",
+    email: "",
+    password: "",
+  };
+  const [formData, setFormData] = useState(initialFormData);
+  const [formError, setFormError] = useState(initialFormError);
+
+  const handleChange = (event) => {
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const errors = SignUpValidator({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+    });
+
+    if (errors.name || errors.email || errors.password) {
+      setFormError(errors);
+    } else {
+      setFormError(initialFormError);
+    }
+    console.log(formData);
+  };
+
   return (
     <>
       <div className="ml-24 md:ml-1 lg:ml-20">
@@ -18,43 +57,70 @@ const SignUp = () => {
           <label className="block mt-6">
             <div className="text-left">
               Name
-              <span className="text-primaryRed ml-1">*</span>
+              <span className="text-red-600 ml-1">*</span>
             </div>
             <input
               type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="username"
               className="sign-border mt-2 py-2  px-4 bg-transparent rounded-sm block w-full"
+              autoComplete="off"
             />
+            {formError && (
+              <p className="text-red-600 text-left mt-1">{formError.name}</p>
+            )}
           </label>
           <label className="block mt-6">
             <div className="text-left">
               Email address
-              <span className="text-primaryRed ml-1">*</span>
+              <span className="text-red-600 ml-1">*</span>
             </div>
             <input
-              type="email"
+              type="text"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="email"
               className="sign-border mt-2 py-2  px-4 bg-transparent rounded-sm block w-full"
+              autoComplete="off"
             />
+            {formError && (
+              <p className="text-red-600 text-left mt-1">{formError.email}</p>
+            )}
           </label>
           <label className="block mt-6">
             <div className="text-left">
               Password
-              <span className="text-primaryRed ml-1">*</span>
+              <span className="text-red-600 ml-1">*</span>
             </div>
             <div className="relative">
               <input
                 type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
                 placeholder="password"
                 className="sign-border  mt-2 py-2  px-4 bg-transparent rounded-sm block w-full"
+                autoComplete="off"
               />
               <span className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
                 <img src={eyeIconUrl} alt="eye icon" className="w-4 h-4 " />
               </span>
+              {formError && (
+                <p className="text-red-600 text-left mt-1">
+                  {formError.password}
+                </p>
+              )}
             </div>
           </label>
         </form>
-        <button className="mt-4 mb-4 w-42 px-16 py-1 h-9 rounded-md font-bold  bg-primaryRed hover:bg-red-900 transition-colors duration-300 ease-in-out">
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className="mt-4 mb-4 w-42 px-16 py-1 h-9 rounded-md font-bold  bg-primaryRed hover:bg-red-900 transition-colors duration-300 ease-in-out"
+        >
           Sign Up
         </button>
         <h4>
