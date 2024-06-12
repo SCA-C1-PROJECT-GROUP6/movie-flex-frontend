@@ -1,4 +1,5 @@
 import "./SignUp.css";
+// import Navbar from "../components/Navbar";
 
 const SignIn = () => {
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
@@ -21,7 +22,7 @@ const SignIn = () => {
             </div>
             <input
               type="email"
-              placeholder="email"
+              placeholder="Email"
               className="sign-border mt-2 py-2  px-4 bg-transparent rounded-sm block w-full"
             />
           </label>
@@ -33,7 +34,7 @@ const SignIn = () => {
             <div className="relative">
               <input
                 type="password"
-                placeholder="password"
+                placeholder="Password"
                 className="sign-border  mt-2 py-2  px-4 bg-transparent rounded-sm block w-full"
               />
               <span className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">

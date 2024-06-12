@@ -1,6 +1,8 @@
 import { useState } from "react";
 import SignUpValidator from "../validators/SignUpValidator";
 import "./SignUp.css";
+import Navbar from "../components/Navbar";
+import MainNavbar from "../components/SubNavbar";
 
 const SignUp = () => {
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
@@ -46,6 +48,8 @@ const SignUp = () => {
 
   return (
     <>
+    <Navbar/>
+    <MainNavbar />
       <div className="ml-24 md:ml-1 lg:ml-20">
         <img src={logoUrl} alt="logo img" className="w-48 md:w-24 lg:w-40" />
       </div>
@@ -64,7 +68,7 @@ const SignUp = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="username"
+              placeholder="Username"
               className="sign-border mt-2 py-2  px-4 bg-transparent rounded-sm block w-full"
               autoComplete="off"
             />
@@ -82,7 +86,7 @@ const SignUp = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="email"
+              placeholder="Email"
               className="sign-border mt-2 py-2  px-4 bg-transparent rounded-sm block w-full"
               autoComplete="off"
             />
@@ -101,7 +105,7 @@ const SignUp = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="password"
+                placeholder="Password"
                 className="sign-border  mt-2 py-2  px-4 bg-transparent rounded-sm block w-full"
                 autoComplete="off"
               />
