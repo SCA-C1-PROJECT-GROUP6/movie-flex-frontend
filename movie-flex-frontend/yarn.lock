@@ -1890,6 +1890,11 @@ normalize-range@^0.1.2:
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
   integrity sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==
 
+notiflix@^3.2.7:
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/notiflix/-/notiflix-3.2.7.tgz#a271f9a2f40eef3c088c9aab79515f80731d0d6f"
+  integrity sha512-NRu6KSeyfphgPKBxh4IUoOYXbROrpuDa9/q9/VPb6UNEP4uII9RKwclTZWUyl1A0tSh9+lEhdz9F/EkskH3A6w==
+
 object-assign@^4.0.1, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"

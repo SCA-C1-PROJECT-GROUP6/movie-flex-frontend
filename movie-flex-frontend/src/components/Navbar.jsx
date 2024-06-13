@@ -1,6 +1,6 @@
 // import React from "react";
 import Logo from "/logo.svg";
-import SignIn from "../pages/SignIn.jsx"
+//import SignIn from "../pages/SignIn.jsx"
 const TopNavbar = () => {
   return (
     <nav className=" flex">
@@ -8,7 +8,7 @@ const TopNavbar = () => {
         <img src={Logo} alt="logo" className="" />
       </div>
 
-      <div className="ml-auto flex items-center gap-20"> 
+      <div className="ml-auto flex items-center gap-20">
         <div className="relative flex items-center w-full">
           <img
             src="/search.svg"
@@ -27,7 +27,7 @@ const TopNavbar = () => {
           />
         </div>
 
-        <a href={SignIn} className="flex items-center px-5 py-2 rounded-md hover:bg-red-900 text-white whitespace-nowrap">
+        <a className=" cursor-pointer flex items-center px-5 py-2 rounded-md hover:bg-red-900 text-white whitespace-nowrap">
           Sign In
         </a>
       </div>
