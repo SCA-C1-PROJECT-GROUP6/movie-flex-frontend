@@ -2,14 +2,14 @@ import { useState } from "react";
 import SignUpValidator from "../validators/SignUpValidator";
 import "./SignUp.css";
 import TrailerButton from "../components/WatchTrailerBtn";
-
+import Footer from "../components/footer"
 
 
 
 const SignUp = () => {
 
   const movieUrl = "https://www.youtube.com/watch?v=Al4LG2YUa3k";
-  
+
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
   const GIconUrl = "https://i.imgur.com/GJnmeaj.png";
   const FbIconUrl = "https://i.imgur.com/QFwv2qR.png";
@@ -53,8 +53,8 @@ const SignUp = () => {
 
   return (
     <>
-        <TrailerButton url={movieUrl} />
-        <div className="ml-24 md:ml-1 lg:ml-20">
+      <TrailerButton url={movieUrl} />
+      <div className="ml-24 md:ml-1 lg:ml-20">
         <img src={logoUrl} alt="logo img" className="w-48 md:w-24 lg:w-40 -mt-6" />
       </div>
       <div className=" p-4 -mt-24 lg:-mt-8 max-w-xl mx-auto rounded-md wrapper text-white h-199 shadow-lg z-10 backdrop-filter backdrop-blur-sm md:mt-2">
@@ -151,6 +151,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
