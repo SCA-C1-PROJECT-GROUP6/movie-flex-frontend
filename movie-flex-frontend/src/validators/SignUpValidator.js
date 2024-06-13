@@ -19,7 +19,7 @@ const SignUpValidator = ({ name, email, password }) => {
   if (!email) {
     errors.email = "Email is required";
   } else if (!isEmail(email)) {
-    errors.email = "Invalid password";
+    errors.email = "Invalid email";
   }
   if (!password) {
     errors.password = "Password required";

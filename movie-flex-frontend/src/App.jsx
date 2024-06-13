@@ -1,10 +1,16 @@
-import SignUp from "./pages/SingUp";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// import SignUp from "./pages/SingUp";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <>
-      <SignUp />
+      {/* <SignUp /> */}
+       <Home /> 
+      <ToastContainer />
     </>
   );
 }

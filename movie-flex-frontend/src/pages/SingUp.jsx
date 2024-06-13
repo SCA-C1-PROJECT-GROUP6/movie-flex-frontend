@@ -1,15 +1,11 @@
 import { useState } from "react";
 import SignUpValidator from "../validators/SignUpValidator";
 import "./SignUp.css";
-import TrailerButton from "../components/WatchTrailerBtn";
+import axios from "../utils/axiosInstance";
 
-
-
+import { toast } from "react-toastify";
 
 const SignUp = () => {
-
-  const movieUrl = "https://www.youtube.com/watch?v=Al4LG2YUa3k";
-  
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
   const GIconUrl = "https://i.imgur.com/GJnmeaj.png";
   const FbIconUrl = "https://i.imgur.com/QFwv2qR.png";
@@ -27,6 +23,7 @@ const SignUp = () => {
   };
   const [formData, setFormData] = useState(initialFormData);
   const [formError, setFormError] = useState(initialFormError);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     setFormData((prev) => ({
@@ -35,7 +32,7 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const errors = SignUpValidator({
       name: formData.name,
@@ -46,25 +43,53 @@ const SignUp = () => {
     if (errors.name || errors.email || errors.password) {
       setFormError(errors);
     } else {
-      setFormError(initialFormError);
+      try {
+        setLoading(true);
+        const requestBody = {
+          username: formData.name,
+          email: formData.email,
+          password: formData.password,
+        };
+
+        const response = await axios.post("/users/signup", requestBody);
+        const data = response.data;
+        toast.success(data.message, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: true,
+        });
+        setFormData(initialFormData);
+        setFormError(initialFormError);
+
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        const response = error.response;
+        const data = response.data;
+        toast.error(data.message, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: true,
+        });
+      }
     }
-    console.log(formData);
   };
 
   return (
     <>
-        <TrailerButton url={movieUrl} />
-        <div className="ml-24 md:ml-1 lg:ml-20">
-        <img src={logoUrl} alt="logo img" className="w-48 md:w-24 lg:w-40 -mt-6" />
+      <div className="ml-24 md:ml-1 lg:ml-20">
+        <img
+          src={logoUrl}
+          alt="logo img"
+          className="w-48 md:w-24 lg:w-40 mt-6"
+        />
       </div>
-      <div className=" p-4 -mt-24 lg:-mt-8 max-w-xl mx-auto rounded-md wrapper text-white h-199 shadow-lg z-10 backdrop-filter backdrop-blur-sm md:mt-2">
-        <h1 className="text-xl font-bold ">
+      <div className=" p-4 lg:-mt-24 max-w-xl mx-auto rounded-md wrapper text-white h-199 shadow-lg z-10 backdrop-filter backdrop-blur-sm md:mt-2">
+        <h1 className="text-xl font-bold text-center ">
           Create an account to continue to MovieFlex{" "}
         </h1>
         <form className="ml-20 mr-20 mt-4">
           <label className="block mt-6">
             <div className="text-left">
-              Name
+              Username
               <span className="text-red-600 ml-1">*</span>
             </div>
             <input
@@ -126,16 +151,17 @@ const SignUp = () => {
         </form>
         <button
           type="submit"
+          value={`${loading ? "Saving... " : "Sign Up"}`}
           onClick={handleSubmit}
-          className="mt-4 mb-4 w-42 px-16 py-1 h-9 rounded-md font-bold  bg-primaryRed hover:bg-red-900 transition-colors duration-300 ease-in-out"
+          className="mx-auto block mt-4 mb-4 w-42 px-16 py-1 h-9 rounded-md font-bold  bg-primaryRed hover:bg-red-900 transition-colors duration-300 ease-in-out"
         >
           Sign Up
         </button>
-        <h4>
+        <h4 className="text-center">
           Already have an account?{" "}
           <span className="text-SignUpColor">Sign In</span>
         </h4>
-        <div className="mt-4 mb-4">OR</div>
+        <div className="mt-4 mb-4 text-center">OR</div>
         <div className="flex justify-center gap-3 mb-12">
           <div className="flex items-center justify-center w-1/2 sign-border px-2 py-2">
             <img src={GIconUrl} alt="Google Icon" className="h-6 w-6 mr-2" />
