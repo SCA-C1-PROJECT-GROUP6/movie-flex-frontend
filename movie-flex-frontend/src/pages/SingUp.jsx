@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SignUpValidator from "../validators/SignUpValidator";
 import "./SignUp.css";
-import axios from "../utils/axiosInstance";
+import axios from "../utils/axiosInstanc";
 
 import { toast } from "react-toastify";
 
