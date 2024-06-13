@@ -1,5 +1,4 @@
 import "./SignUp.css";
-// import Navbar from "../components/Navbar";
 
 const SignIn = () => {
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
