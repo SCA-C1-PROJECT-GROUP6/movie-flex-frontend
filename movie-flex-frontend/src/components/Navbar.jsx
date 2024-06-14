@@ -4,6 +4,7 @@ import axios from "../utils/axiosInstanc";
 import WatchTrailerBtn from "../components/WatchTrailerBtn";
 import PrivateNavBar from "./PrivateNavBar";
 import Rating from "./Rating";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -31,19 +32,19 @@ const Navbar = () => {
   const handleClear = () => {
     setInputValue("");
   };
-   useEffect(() => {
-     const fetchDefaultMovie = async () => {
-       try {
-         const response = await axios.get(
-           `/movies/search?query=The dark Knight`
-         );
-         setMovie(response.data[0]);
-       } catch (error) {
-         console.log(error);
-       }
-     };
-     fetchDefaultMovie();
-   }, []);
+  useEffect(() => {
+    const fetchDefaultMovie = async () => {
+      try {
+        const response = await axios.get(
+          `/movies/search?query=The dark Knight`
+        );
+        setMovie(response.data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDefaultMovie();
+  }, []);
   return (
     <>
       <nav className=" flex">
@@ -93,7 +94,7 @@ const Navbar = () => {
               <img
                 src={movie.posterImg}
                 alt="img poster"
-                className="adjust-width ml-8 hover:bg-black hover:opacity-60 transition-opacity duration-200 ease-in-out"
+                className=" cursor-pointer adjust-width ml-8 hover:bg-black hover:opacity-60 transition-opacity duration-200 ease-in-out"
               />
             </div>
             <div className="text-left ml-20 flex flex-col ">
@@ -124,6 +125,9 @@ const Navbar = () => {
                   <Rating />
                   <Rating />
                   <Rating />
+                  <button className="mx-auto block my-3  bg-red-800 text-white px-8 py-1 rounded-md hover:bg-red-950">
+                    <Link to={"/Details"}>See details</Link>
+                  </button>
                   <WatchTrailerBtn url={movie.trailer} />
                 </div>
               </div>
