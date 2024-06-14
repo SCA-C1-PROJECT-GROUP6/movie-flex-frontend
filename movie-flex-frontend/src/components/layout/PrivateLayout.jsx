@@ -1,8 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
-import PrivateNavBar from "../PrivateNavBar";
-import Footer from "../footer";
-import SubNavbar from "../SubNavbar"
 import { UseAuth } from "../context/AuthContext";
+import Navbar from "../Navbar";
+
 const PrivateLayout = () => {
   const auth = UseAuth();
   if (!auth) {
@@ -11,9 +10,7 @@ const PrivateLayout = () => {
 
   return (
     <>
-      <PrivateNavBar />
-      <SubNavbar/>
-      <Footer/>
+      <Navbar />
       <Outlet />
     </>
   );

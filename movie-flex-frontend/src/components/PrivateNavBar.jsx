@@ -43,7 +43,7 @@ const PrivateNavBar = () => {
           Profile
         </NavLink>
         <NavLink
-          to={"/logout"}
+          to={"/signin"}
           className="text-lg hover:text-red-400 px-1 py-2"
           onClick={handleLogout}
         >

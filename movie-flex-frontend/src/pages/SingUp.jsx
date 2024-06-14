@@ -1,9 +1,12 @@
 import { useState } from "react";
 import SignUpValidator from "../validators/SignUpValidator";
-import "./SignUp.css";
+import { useNavigate } from "react-router-dom";
+
 import axios from "../utils/axiosInstanc";
+import { Link } from "react-router-dom";
 
 import { toast } from "react-toastify";
+import "./SignUp.css";
 
 const SignUp = () => {
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
@@ -11,6 +14,8 @@ const SignUp = () => {
   const FbIconUrl = "https://i.imgur.com/QFwv2qR.png";
   const logoUrl = "https://i.imgur.com/ouyiPCG.png";
   const eyeHideUrl = "https://i.imgur.com/IMmw9S6.png";
+
+  const navigate = useNavigate();
 
   const initialFormData = {
     name: "",
@@ -68,6 +73,7 @@ const SignUp = () => {
         setFormError(initialFormError);
 
         setLoading(false);
+        navigate("/");
       } catch (error) {
         setLoading(false);
 
@@ -173,7 +179,9 @@ const SignUp = () => {
         </button>
         <h4 className="text-center">
           Already have an account?{" "}
-          <span className="text-SignUpColor">Sign In</span>
+          <span className="text-SignUpColor">
+            <Link to={"/signin"}>Sign In</Link>
+          </span>
         </h4>
         <div className="mt-4 mb-4 text-center">OR</div>
         <div className="flex justify-center gap-3 mb-12">
