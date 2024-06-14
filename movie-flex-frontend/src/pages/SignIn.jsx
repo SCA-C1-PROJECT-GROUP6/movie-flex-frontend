@@ -4,7 +4,6 @@ import axios from "../utils/axiosInstanc";
 import SignInValidator from "../validators/SignInValidator";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
 const SignIn = () => {
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
   const eyeHideUrl = "https://i.imgur.com/IMmw9S6.png";
