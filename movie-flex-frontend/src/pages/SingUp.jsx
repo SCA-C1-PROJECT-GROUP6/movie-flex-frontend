@@ -61,7 +61,7 @@ const SignUp = () => {
         const data = response.data;
 
         toast.success(data.message, {
-          position: toast.POSITION.TOP_CENTER,
+          position: toast.POSITION.TOP_RIGHT,
           autoClose: true,
         });
         setFormData(initialFormData);
@@ -70,10 +70,10 @@ const SignUp = () => {
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        
+
         console.log(error);
-        toast.error(error.message, {
-          position: toast.POSITION.TOP_CENTER,
+        toast.error(error.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
           autoClose: true,
         });
       }
