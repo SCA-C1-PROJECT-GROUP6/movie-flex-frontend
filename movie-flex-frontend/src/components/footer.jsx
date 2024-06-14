@@ -2,8 +2,8 @@ import Logo from "/logo.svg";
 
 const Footer = () => {
     return (
-        <footer className="w-full">
-            <div className="w-full bg-black text-white py-8  max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-10">
+        <footer className="w-full bg-black">
+            <div className="w-full text-white p-8 max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className="flex items-start">
                     <img src={Logo} alt="logo" className="mb-4" />
                 </div>
@@ -45,12 +45,11 @@ const Footer = () => {
                         </a>
                     </div>
                 </div>
-                <div className="mt-8 px-4 pt-4 text-center">
+            </div>
+            <div className=" text-center">
                 <p className="mb-4">Copyright &copy; MOVIEFLEX 2024. All rights reserved.</p>
             </div>
-            <div className="bg-red-800 p-9"></div>
-            </div>
-          
+            <div className="bg-red-800 p-5"></div>
 
         </footer>
 
