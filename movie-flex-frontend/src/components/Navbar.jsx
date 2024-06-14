@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "/logo.svg";
 import axios from "../utils/axiosInstanc";
 import WatchTrailerBtn from "../components/WatchTrailerBtn";
@@ -7,7 +7,7 @@ import Rating from "./Rating";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const [inputValue, setInputValue] = useState("The dark Knight");
+  const [inputValue, setInputValue] = useState("");
   const [movie, setMovie] = useState(null);
 
   const handleChange = (event) => {
@@ -31,6 +31,19 @@ const Navbar = () => {
   const handleClear = () => {
     setInputValue("");
   };
+   useEffect(() => {
+     const fetchDefaultMovie = async () => {
+       try {
+         const response = await axios.get(
+           `/movies/search?query=The dark Knight`
+         );
+         setMovie(response.data[0]);
+       } catch (error) {
+         console.log(error);
+       }
+     };
+     fetchDefaultMovie();
+   }, []);
   return (
     <>
       <nav className=" flex">

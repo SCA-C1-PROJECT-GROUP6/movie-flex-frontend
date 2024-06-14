@@ -11,7 +11,7 @@ const TrailerButton = ({ url }) => {
 
   return (
     <button
-      className="mx-auto block my-3  bg-red-800 text-white px-4 py-1 rounded-md hover:bg-red-950"
+      className="mx-auto block my-3  bg-red-800 text-white px-8 py-1 rounded-md hover:bg-red-950"
       onClick={handleWatchClick}
     >
       Watch Trailer
