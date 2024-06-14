@@ -1,5 +1,7 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({ baseURL: "http://localhost:9000/api/" });
+const axiosInstance = axios.create({
+  baseURL: "https://movie-flex-backend.onrender.com/api/",
+});
 
 export default axiosInstance;

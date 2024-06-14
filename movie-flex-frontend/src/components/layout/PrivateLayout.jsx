@@ -5,7 +5,7 @@ import Navbar from "../Navbar";
 const PrivateLayout = () => {
   const auth = UseAuth();
   if (!auth) {
-    return <Navigate to={"/signin"} />;
+    return <Navigate to={"/signup"} />;
   }
 
   return (

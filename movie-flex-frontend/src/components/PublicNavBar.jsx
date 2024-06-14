@@ -1,15 +1,10 @@
-import { NavLink } from "react-router-dom";
-
 const PublicNavBar = () => {
   return (
     <>
-      <nav className="cursor-pointer text-white flex justify-evenly">
-        <NavLink to={"/signin"} className="text-white">
-          Sign In
-        </NavLink>
-        <NavLink to={"/signup"} className="text-white">
-          Sign Up
-        </NavLink>
+      <nav className="cursor-pointer text-red-400 flex justify-evenly mt-3 -mb-10">
+        <marquee direction="left" className="text-2xl font-bold animate-text">
+          Welcome to MovieFlex😍🥰🌟!!
+        </marquee>
       </nav>
     </>
   );
