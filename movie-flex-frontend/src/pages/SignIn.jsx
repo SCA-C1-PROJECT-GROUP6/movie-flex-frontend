@@ -3,12 +3,15 @@ import { useState } from "react";
 import axios from "../utils/axiosInstanc";
 import SignInValidator from "../validators/SignInValidator";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
   const eyeHideUrl = "https://i.imgur.com/IMmw9S6.png";
 
   const logoUrl = "https://i.imgur.com/ouyiPCG.png";
+
+  const navigate = useNavigate();
 
   const initialFormData = {
     email: "",
@@ -59,6 +62,7 @@ const SignIn = () => {
         setFormError(initialFormError);
 
         setLoading(false);
+        navigate("/");
       } catch (error) {
         setLoading(false);
         toast.error(error.message, {
