@@ -1,6 +1,17 @@
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const PrivateNavBar = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    window.localStorage.removeItem("userData");
+    toast.success("Logout Successful", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: true,
+    });
+    navigate("/signin");
+  };
   return (
     <>
       <nav className="cursor-pointer text-white flex justify-evenly">
@@ -34,6 +45,7 @@ const PrivateNavBar = () => {
         <NavLink
           to={"/logout"}
           className="text-lg hover:text-red-400 px-1 py-2"
+          onClick={handleLogout}
         >
           Logout
         </NavLink>

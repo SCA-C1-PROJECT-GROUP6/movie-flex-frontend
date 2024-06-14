@@ -2,10 +2,11 @@ import { Navigate, Outlet } from "react-router-dom";
 import PrivateNavBar from "../PrivateNavBar";
 import Footer from "../footer";
 import SubNavbar from "../SubNavbar"
+import { UseAuth } from "../context/AuthContext";
 const PrivateLayout = () => {
-  const auth = true;
+  const auth = UseAuth();
   if (!auth) {
-    return <Navigate to={"/login"} />;
+    return <Navigate to={"/signin"} />;
   }
 
   return (

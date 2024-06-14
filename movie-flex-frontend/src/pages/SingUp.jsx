@@ -10,6 +10,7 @@ const SignUp = () => {
   const GIconUrl = "https://i.imgur.com/GJnmeaj.png";
   const FbIconUrl = "https://i.imgur.com/QFwv2qR.png";
   const logoUrl = "https://i.imgur.com/ouyiPCG.png";
+  const eyeHideUrl = "https://i.imgur.com/IMmw9S6.png";
 
   const initialFormData = {
     name: "",
@@ -24,12 +25,17 @@ const SignUp = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [formError, setFormError] = useState(initialFormError);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event) => {
     setFormData((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
     }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
   };
 
   const handleSubmit = async (event) => {
@@ -53,8 +59,9 @@ const SignUp = () => {
 
         const response = await axios.post("/users/signup", requestBody);
         const data = response.data;
+
         toast.success(data.message, {
-          position: toast.POSITION.TOP_CENTER,
+          position: toast.POSITION.TOP_RIGHT,
           autoClose: true,
         });
         setFormData(initialFormData);
@@ -63,10 +70,10 @@ const SignUp = () => {
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        const response = error.response;
-        const data = response.data;
-        toast.error(data.message, {
-          position: toast.POSITION.TOP_CENTER,
+
+        console.log(error);
+        toast.error(error.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
           autoClose: true,
         });
       }
@@ -130,7 +137,7 @@ const SignUp = () => {
             </div>
             <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
@@ -138,8 +145,15 @@ const SignUp = () => {
                 className="sign-border  mt-2 py-2  px-4 bg-transparent rounded-sm block w-full"
                 autoComplete="off"
               />
-              <span className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
-                <img src={eyeIconUrl} alt="eye icon" className="w-4 h-4 " />
+              <span
+                onClick={togglePasswordVisibility}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+              >
+                <img
+                  src={showPassword ? eyeHideUrl : eyeIconUrl}
+                  alt="eye icon"
+                  className="w-4 h-4 "
+                />
               </span>
               {formError && (
                 <p className="text-red-600 text-left mt-1">

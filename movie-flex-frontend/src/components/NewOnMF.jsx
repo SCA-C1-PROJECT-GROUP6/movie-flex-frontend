@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "../utils/axiosInstanc";
-import WatchTrailerBtn from "../components/WatchTrailerBtn";
+import WatchTrailerBtn from "./WatchTrailerBtn";
 
-const Hero = () => {
+const NewOnMF = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const movieSearch = async () => {
       try {
         const response = await axios.get("/movies/getallmovies");
-        console.log(response);
         setMovies(response.data);
       } catch (error) {
         console.log(error);
@@ -42,4 +41,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default NewOnMF;

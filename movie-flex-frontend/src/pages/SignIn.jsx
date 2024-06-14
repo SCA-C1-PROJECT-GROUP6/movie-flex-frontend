@@ -3,11 +3,15 @@ import { useState } from "react";
 import axios from "../utils/axiosInstanc";
 import SignInValidator from "../validators/SignInValidator";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
+  const eyeHideUrl = "https://i.imgur.com/IMmw9S6.png";
 
   const logoUrl = "https://i.imgur.com/ouyiPCG.png";
+
+  const navigate = useNavigate();
 
   const initialFormData = {
     email: "",
@@ -20,6 +24,11 @@ const SignIn = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [formError, setFormError] = useState(initialFormError);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
 
   const handleChange = (event) => {
     setFormData((prev) => ({
@@ -43,20 +52,21 @@ const SignIn = () => {
         const response = await axios.post("/users/login", formData);
         const data = response.data;
         console.log(data);
+        window.localStorage.setItem("userData", JSON.stringify(data));
+
         toast.success(data.message, {
-          position: toast.POSITION.TOP_CENTER,
+          position: toast.POSITION.TOP_RIGHT,
           autoClose: true,
         });
         setFormData(initialFormData);
         setFormError(initialFormError);
 
         setLoading(false);
+        navigate("/");
       } catch (error) {
         setLoading(false);
-        const response = error.response;
-        const data = response.data;
-        toast.error(data.message, {
-          position: toast.POSITION.TOP_CENTER,
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_RIGHT,
           autoClose: true,
         });
       }
@@ -98,15 +108,22 @@ const SignIn = () => {
             <div className="relative">
               <input
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
                 className="sign-border  mt-2 py-2  px-4 bg-transparent rounded-sm block w-full"
                 autoComplete="off"
               />
-              <span className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
-                <img src={eyeIconUrl} alt="eye icon" className="w-4 h-4 " />
+              <span
+                onClick={togglePasswordVisibility}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+              >
+                <img
+                  src={showPassword ? eyeHideUrl : eyeIconUrl}
+                  alt="eye icon"
+                  className="w-4 h-4 "
+                />
               </span>
               {formError && (
                 <p className="text-red-600 text-left mt-1">

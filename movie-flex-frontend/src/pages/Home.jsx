@@ -1,68 +1,47 @@
-//import { useState } from "react";
-//import axios from "axios";
-//import TrailerButton from "../components/WatchTrailerBtn";
-import Hero from "../components/Hero";
+import { useContext, useState, useEffect } from "react";
+import axios from "../utils/axiosInstanc";
+
+import NewOnMF from "../components/NewOnMF";
+import NavContext from "../components/context/NavContext";
+import WatchTrailerBtn from "../components/WatchTrailerBtn";
+
 import "./Home.css";
 
 const Home = () => {
-  //const movieUrl = "https://www.youtube.com/watch?v=Al4LG2YUa3k";
+  const { searchValue } = useContext(NavContext);
 
-  //const [movies, setMovies] = useState([]);
-  // const [movieTitle, setMovieTitle] = useState("");
+  const [movie, setMovie] = useState("");
 
-  // const handleChange = (event) => {
-  //   setMovieTitle(event.target.value);
-  // };
-  // const handleSearch = async () => {
-  //   const apiKey = "669bd93a4a46a32cd284d7f88107c0dc";
-  //   try {
-  //     const response = await axios.get(
-  //       `https://api.themoviedb.org/3/movie/popular?Language=enUS&apikey=${apiKey}`
-  //     );
+  useEffect(() => {
+    const movieSearch = async () => {
+      try {
+        const response = await axios.get(`/movies/search?q=${searchValue}`);
+        console.log(response.data);
+        setMovie(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //     console.log(response.data);
-  //     setMovies(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+    movieSearch();
+  });
 
   return (
     <>
-      <Hero />
-
-      {/* <div>
-        {movies.map((item, index) => {
-          return (
-            <div key={index}>
-              <video
-                src={`https://www.youtube.com/watch?v=${item.videos.results.key}`}
-                type="video/webm"
-                poster={item.poster_path}
-                width="350px"
-                controls
-              >
-                <track
-                  kind="subtitles"
-                  src="src/deals/subtitle.vtt"
-                  srcLang="en"
-                  label="English"
-                />
-                <p>
-                  Your browser does not support video tags here is a link to the
-                  video
-                </p>
-                <a
-                  href={`https://www.youtube.com/watch?v=${item.videos.results.key}`}
-                  width="350px"
-                >
-                  link to video
-                </a>
-              </video>
-            </div>
-          );
-        })}
-      </div> */}
+      <div className="text-white flex justify-center g-4">
+        <div className="mt-4 w-full h-full object-cover px-3">
+          <img
+            src={movie.posterImg}
+            alt="img poster"
+            className="w-42 h-34  hover:bg-black hover:opacity-60 transition-opacity duration-200 ease-in-out"
+          />
+          <div className="">
+            <h2 className="m-2">{movie.title}</h2>
+            <WatchTrailerBtn className="m-2" url={movie.trailer} />
+          </div>
+        </div>
+      </div>
+      <NewOnMF />
     </>
   );
 };
