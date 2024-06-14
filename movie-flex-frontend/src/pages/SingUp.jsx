@@ -3,6 +3,7 @@ import SignUpValidator from "../validators/SignUpValidator";
 import { useNavigate } from "react-router-dom";
 
 import axios from "../utils/axiosInstanc";
+import { Link } from "react-router-dom";
 
 import { toast } from "react-toastify";
 import "./SignUp.css";
@@ -178,7 +179,9 @@ const SignUp = () => {
         </button>
         <h4 className="text-center">
           Already have an account?{" "}
-          <span className="text-SignUpColor">Sign In</span>
+          <span className="text-SignUpColor">
+            <Link to={"/signin"}>Sign In</Link>
+          </span>
         </h4>
         <div className="mt-4 mb-4 text-center">OR</div>
         <div className="flex justify-center gap-3 mb-12">
