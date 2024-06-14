@@ -3,9 +3,13 @@ import { NavLink } from "react-router-dom";
 const PublicNavBar = () => {
   return (
     <>
-      <nav>
-        <NavLink to={"/sign-in"}>Sign In</NavLink>
-        <NavLink to={"/sign-up"}>Sign Up</NavLink>
+      <nav className="cursor-pointer text-white flex justify-evenly">
+        <NavLink to={"/signin"} className="text-white">
+          Sign In
+        </NavLink>
+        <NavLink to={"/signup"} className="text-white">
+          Sign Up
+        </NavLink>
       </nav>
     </>
   );
