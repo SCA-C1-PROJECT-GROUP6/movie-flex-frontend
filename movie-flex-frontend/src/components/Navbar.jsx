@@ -21,8 +21,8 @@ const Navbar = () => {
     setInputValue("");
   };
   return (
-    <nav className=" flex">
-      <div className="">
+    <nav className="flex px-5">
+      <div className=" px-2">
         <img src={Logo} alt="logo" className="" />
       </div>
 
