@@ -8,6 +8,8 @@ import PublicLayout from "./components/layout/PublicLayout";
 import SignUp from "./pages/SingUp";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import Profile from "./pages/Profile";
+import Logout from "./pages/Logout";
 
 function App() {
   return (
@@ -16,13 +18,13 @@ function App() {
       <Routes>
         <Route element={<PrivateLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="profile" element={<Home />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="details" element={<Home />} />
-          <Route path="logout" element={<Home />} />
+          <Route path="logout" element={<Logout />} />
         </Route>
         <Route element={<PublicLayout />}>
-          <Route path="sign-up" element={<SignUp />} />
-          <Route path="sign-in" element={<SignIn />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="signin" element={<SignIn />} />
         </Route>
       </Routes>
       <ToastContainer />

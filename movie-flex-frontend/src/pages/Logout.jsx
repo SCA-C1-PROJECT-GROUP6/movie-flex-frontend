@@ -1,7 +1,7 @@
 const Logout = () => {
   return (
     <>
-      <div>This is the profile page</div>
+      <div className="text-white">This is the logout page</div>
     </>
   );
 };

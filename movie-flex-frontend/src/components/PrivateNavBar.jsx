@@ -26,7 +26,7 @@ const PrivateNavBar = () => {
           Latest
         </NavLink>
         <NavLink
-          to={"/logout"}
+          to={"/profile"}
           className="text-lg hover:text-red-400 px-1 py-2"
         >
           Profile
