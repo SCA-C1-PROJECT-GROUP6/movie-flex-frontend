@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import axios from "../utils/axiosInstanc";
-import { Link } from "react-router-dom";
 
 import { toast } from "react-toastify";
 import "./SignUp.css";
