@@ -1,9 +1,11 @@
 import { useState } from "react";
 import SignUpValidator from "../validators/SignUpValidator";
-import "./SignUp.css";
+import { useNavigate } from "react-router-dom";
+
 import axios from "../utils/axiosInstanc";
 
 import { toast } from "react-toastify";
+import "./SignUp.css";
 
 const SignUp = () => {
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
@@ -11,6 +13,8 @@ const SignUp = () => {
   const FbIconUrl = "https://i.imgur.com/QFwv2qR.png";
   const logoUrl = "https://i.imgur.com/ouyiPCG.png";
   const eyeHideUrl = "https://i.imgur.com/IMmw9S6.png";
+
+  const navigate = useNavigate();
 
   const initialFormData = {
     name: "",
@@ -68,6 +72,7 @@ const SignUp = () => {
         setFormError(initialFormError);
 
         setLoading(false);
+        navigate("/");
       } catch (error) {
         setLoading(false);
 

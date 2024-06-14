@@ -1,9 +1,10 @@
-import "./SignUp.css";
 import { useState } from "react";
 import axios from "../utils/axiosInstanc";
 import SignInValidator from "../validators/SignInValidator";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./SignUp.css";
 
 const SignIn = () => {
   const eyeIconUrl = "https://i.imgur.com/nW2iNQm.png";
@@ -146,7 +147,7 @@ const SignIn = () => {
             className="text-SignUpColor"
             value={`${loading ? "Signing..." : "Sign In"}`}
           >
-            Sign Up
+            <Link to={"/signup"}>Sign Up</Link>
           </span>
         </h4>
       </div>
