@@ -3,6 +3,8 @@ import Logo from "/logo.svg";
 import axios from "../utils/axiosInstanc";
 import WatchTrailerBtn from "../components/WatchTrailerBtn";
 import PrivateNavBar from "./PrivateNavBar";
+import Rating from "./Rating";
+import "./Navbar.css";
 
 const Navbar = () => {
   const [inputValue, setInputValue] = useState("The dark Knight");
@@ -73,26 +75,45 @@ const Navbar = () => {
       <PrivateNavBar className="mt-2" />
       <div className="text-white w-38 mt-8">
         {movie && (
-          <div className="mt-2 flex justify-center">
+          <div className="mt-2 flex justify-center g-34">
             <div>
               <img
                 src={movie.posterImg}
                 alt="img poster"
-                className="w-80 h-64 mx-auto hover:bg-black hover:opacity-60 transition-opacity duration-200 ease-in-out"
+                className="adjust-width ml-8 hover:bg-black hover:opacity-60 transition-opacity duration-200 ease-in-out"
               />
             </div>
-            <div className="mx-auto text-center flex flex-col w-34">
-              <h2 className="m-2">{movie.title}</h2>
-              <div>
-                <h3>Actors:</h3>
-                <ul>
-                  <li>{movie.actor}</li>
-                  <li>{movie.actor}</li>
-                  <li>{movie.actor}</li>
+            <div className="text-left ml-20 flex flex-col ">
+              <h2 className="m-2 text-left">
+                <span className="text-red-600">Title:</span> {movie.title}
+              </h2>
+              <div className="flex flex-col">
+                <ul className="flex text-left">
+                  <span className="text-red-600 text-left">Actors:</span>
+                  <li className="ml-2"> {movie.actors[0]}, </li>
+                  <li className="ml-2"> {movie.actors[1]}, </li>
+                  <li className="ml-2"> {movie.actors[2]}, </li>
                 </ul>
+                <p className=" mt-2 line-clamp-2 overflow-hidden text-ellipsis ">
+                  <span className="text-red-600 text-left">Description:</span>{" "}
+                  {movie.description}
+                </p>
+                <p className="text-white">
+                  <span className="text-red-600">Rating: </span>
+                  {movie.averageRating}
+                </p>
+                <p className="text-white">
+                  <span className="text-red-600">Rating: </span>
+                  {movie.reviews[0].review}
+                </p>
+                <div className="flex mt-2">
+                  <h3 className="text-2xl font-bold">Rate: </h3>
+                  <Rating />
+                  <Rating />
+                  <Rating />
+                  <WatchTrailerBtn url={movie.trailer} />
+                </div>
               </div>
-              <p className="line-clamp-2 overflow-hidden text-ellipsis">{""}</p>
-              <WatchTrailerBtn className="text-left" url={movie.trailer} />
             </div>
           </div>
         )}
