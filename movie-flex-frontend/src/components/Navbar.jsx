@@ -117,7 +117,7 @@ const Navbar = () => {
                   {movie.averageRating}
                 </p>
                 <p className="text-white">
-                  <span className="text-red-600">Rating: </span>
+                  <span className="text-red-600">Reviews: </span>
                   {movie.reviews[0].review}
                 </p>
                 <div className="flex mt-2">
