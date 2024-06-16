@@ -8,6 +8,7 @@ import PublicLayout from "./components/layout/PublicLayout";
 import SignUp from "./pages/SingUp";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import Details from "./pages/Details";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route element={<PrivateLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="details" element={<Home />} />
+          <Route path="details" element={<Details />} />
         </Route>
         <Route element={<PublicLayout />}>
           <Route path="signup" element={<SignUp />} />

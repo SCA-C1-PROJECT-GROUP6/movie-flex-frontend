@@ -112,6 +112,7 @@ const Navbar = () => {
                   <span className="text-red-600 text-left">Description:</span>{" "}
                   {movie.description}
                 </p>
+                <Rating />
                 <p className="text-white">
                   <span className="text-red-600">Rating: </span>
                   {movie.averageRating}
@@ -121,15 +122,14 @@ const Navbar = () => {
                   {movie.reviews[0].review}
                 </p>
                 <div className="flex mt-2">
-                  <h3 className="text-2xl font-bold">Rate: </h3>
-                  <Rating />
-                  <Rating />
-                  <Rating />
-                  <button className="mx-auto block my-3  bg-red-800 text-white px-8 py-1 rounded-md hover:bg-red-950">
-                    <Link to={"/Details"}>See details</Link>
-                  </button>
+                  <Link to={"/details"}>
+                    <button className="mx-auto block my-3  bg-red-800 text-white px-8 py-1 rounded-md hover:bg-red-950">
+                      See details
+                    </button>
+                  </Link>
                   <WatchTrailerBtn url={movie.trailer} />
                 </div>
+              
               </div>
             </div>
           </div>
