@@ -62,7 +62,12 @@ const SignUp = () => {
           password: formData.password,
         };
 
-        const response = await axios.post("/users/signup", requestBody);
+        const response = await axios.post("/users/signup", requestBody, {
+          headers: {
+            Authorization:
+              "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZjMyZWYwM2ZkNmYyN2E0ODA0ZTEwNmVlN2I5NDBiYyIsInN1YiI6IjY2NjlhY2MzZTk4MTA1ZTQyNzM3ZjI5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QTSkCBiLob14xwCItJSWuCcbVawXFBYaZ0hb17cU5zM",
+          },
+        });
         const data = response.data;
         window.localStorage.setItem("userData", JSON.stringify(data));
 
