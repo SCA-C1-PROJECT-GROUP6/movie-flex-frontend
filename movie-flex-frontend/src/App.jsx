@@ -9,6 +9,7 @@ import SignUp from "./pages/SingUp";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Details from "./pages/Details";
+import Landing from "./pages/Landing";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route element={<PublicLayout />}>
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<SignIn />} />
+          <Route path="landing" element={<Landing />} />
         </Route>
       </Routes>
       <ToastContainer />
