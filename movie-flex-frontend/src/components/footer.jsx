@@ -96,6 +96,7 @@ const Footer = () => {
         </div>
         <div className="bg-red-800 p-5"></div>
       </footer>
+      
     </>
   );
 };
