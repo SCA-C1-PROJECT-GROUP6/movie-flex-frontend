@@ -4,7 +4,7 @@ import { UseAuth } from "../context/AuthContext";
 
 const PrivateLayout = () => {
   const auth = UseAuth();
-  if (auth) {
+  if (!auth) {
     return <Navigate to={"/"} />;
   }
 
